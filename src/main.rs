@@ -9,7 +9,7 @@ fn main() {
     }
     println!("Starte euklidischen Algorithmus:");
     let start_time = Instant::now();
-    let ggt: u64 = euklidische_algo(x, y);
+    let ggt: u64 = euclidean_algo(x, y);
     let end_time = Instant::now();
     let elapsed_time = end_time.duration_since(start_time).as_secs_f64();
     println!("Der größte gemeinsame Teiler von {x} und {y} ist {ggt}!");
@@ -30,7 +30,7 @@ fn request_param(text: &str) -> u64 {
         .expect("Input ist keine Zahl.");
 }
 
-fn euklidische_algo(x: u64, y: u64) -> u64 {
+fn euclidean_algo(x: u64, y: u64) -> u64 {
     let rest = x % y;
     let teiler = (x-rest)/y;
     
