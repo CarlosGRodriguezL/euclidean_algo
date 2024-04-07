@@ -37,7 +37,7 @@ fn euclidean_algo(x: u64, y: u64) -> u64 {
     println!("-> {x} dividiert durch {y} ist {teiler} mit {rest} Rest.");
 
     if rest > 0 {
-        return euklidische_algo(y, rest);
+        return euclidean_algo(y, rest);
     }
     return y;
 }
