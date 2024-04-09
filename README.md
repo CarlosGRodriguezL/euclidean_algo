@@ -21,3 +21,6 @@ let gcd_loop = eucl_algo_loop::run(x,y);
 println!("The gcd is {gcd_recursive} (loop: {gcd_loop})");
 
 ```
+
+For bigger integers a run_big function is provided.
+You can call `::run_bigint(x,y)` instead of run, using `num::BigUint` to process bigger numbers.
