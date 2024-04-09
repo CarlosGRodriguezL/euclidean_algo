@@ -13,11 +13,11 @@ pub fn run(mut x: u64, mut y: u64) -> u64 {
 
 pub fn run_bigint(mut x: BigUint, mut y: BigUint) -> BigUint {
     loop {
-        let r = x.div_rem(&y);
+        let r = x.div_rem(&y).1;
         x = y;
-        y = r.1;
+        y = r;
         if y.is_zero() {
-            break x;
+            break x.clone();
         }
     }
 }
