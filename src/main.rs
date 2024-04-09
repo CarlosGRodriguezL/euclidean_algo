@@ -1,21 +1,26 @@
 use std::io;
 use std::time::Instant;
+use euclidean_algo::{eucl_algo_recursive, eucl_algo_loop};
 
 fn main() {
-    let mut x: u64 = request_param("Gib die erste Zahl ein: ");
-    let mut y: u64 = request_param("Gib die zweite Zahl ein: ");
+    let mut x: u64 = request_param("Enter number (max. 64 byte): ");
+    let mut y: u64 = request_param("Enter number (max. 64 byte): ");
     if x < y {
         (x, y) = (y, x);
     }
-    println!("Starte euklidischen Algorithmus:");
-    let start_time = Instant::now();
-    let ggt: u64 = euclidean_algo(x, y);
-    let end_time = Instant::now();
-    let elapsed_time = end_time.duration_since(start_time).as_secs_f64();
-    println!("Der größte gemeinsame Teiler von {x} und {y} ist {ggt}!");
-    println!("Der euklidische Algorithmus hat {elapsed_time} Sekunden gedauert.");
-    let kgv: u128 = kg_vielfaches(x.try_into().unwrap(), y.try_into().unwrap(), ggt.try_into().unwrap());
-    println!("Das kleinste gemeinsame Vielfache von {x} und {y} ist {kgv}!")
+    println!("Start...");
+    let sr = Instant::now();
+    let gcd: u64 = eucl_algo_recursive::run(x, y);
+    let er = Instant::now();
+    let rt = er.duration_since(sr).as_secs_f64();
+    println!("Result of {x} and {y} is {gcd}!");
+    println!("Recursion took {rt} seconds.");
+    let sl = Instant::now();
+    let gcd2: u64 = eucl_algo_loop::run(x, y);
+    let el = Instant::now();
+    let lt = el.duration_since(sl).as_secs_f64();
+    println!("Result of {x} and {y} is {gcd2}!");
+    println!("Looping took {lt} seconds");
 }
 
 fn request_param(text: &str) -> u64 {
@@ -23,25 +28,10 @@ fn request_param(text: &str) -> u64 {
     println!("{text}");
     io::stdin()
         .read_line(&mut input_line)
-        .expect("Input konnte nicht gelesen werden.");
+        .expect("Unable reading input.");
     return input_line
         .trim()
         .parse()
-        .expect("Input ist keine Zahl.");
+        .expect("Input is not valid.");
 }
 
-fn euclidean_algo(x: u64, y: u64) -> u64 {
-    let rest = x % y;
-    let teiler = (x-rest)/y;
-    
-    println!("-> {x} dividiert durch {y} ist {teiler} mit {rest} Rest.");
-
-    if rest > 0 {
-        return euclidean_algo(y, rest);
-    }
-    return y;
-}
-
-fn kg_vielfaches(x: u128, y: u128, ggt: u128) -> u128 {
-    return (x/ggt)*y;
-}

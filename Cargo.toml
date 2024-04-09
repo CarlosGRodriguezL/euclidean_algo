@@ -1,11 +1,17 @@
 [package]
-name = "euklidische_algo"
-version = "0.1.1"
+name = "euclidean_algo"
+version = "0.2.0"
 edition = "2021"
 license = "MIT"
-description = "Implementation of the euklidish algorithm to find the "
+description = "Implementation of the euclidean algorithm to find the greatest common divisor."
 
+[lib]
+name = "euclidean_algo"
+path = "src/euclidean_algorithm/mod.rs"
 
+[[bin]]
+name = "libtest"
+path = "src/main.rs"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

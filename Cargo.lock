@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "euklidische_algo"
-version = "0.1.0"
+name = "euclidean_algo"
+version = "0.1.1"
