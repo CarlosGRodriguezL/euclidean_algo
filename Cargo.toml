@@ -4,7 +4,7 @@ version = "0.2.1"
 edition = "2021"
 license = "MIT"
 repository = "https://github.com/CarlosGRodriguezL/euclidean_algo"
-authors = [Carlos Rodriguez]
+authors = ["Carlos Rodriguez"]
 description = "Implementation of the euclidean algorithm to find the greatest common divisor."
 
 [lib]
